@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>計時器(Max 30 minutes)</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+    integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="selectBox">
+    <div class="start"><i class="fas fa-play-circle"></i></div>
+    <div class="reset"><i class="fas fa-history"></i></div>
+    <div class="stop"><i class="fas fa-stop-circle"></i></div>
+  </div>
+
+  <div class="body">
+    <!--   選擇輸入時間 -->
+    <div class="timeBox">
+      <div class="minuteBox">
+        <input type="number" class="time minutes" max="30" min="0" placeholder="0">
+        <span class="chinese">分</span>
+      </div>
+      <span style="font-size: 30px">:</span>
+      <div class="secondBox">
+        <input type="number" class="time seconds" max="59" min="0" placeholder="0">
+        <span class="chinese">秒</span>
+      </div>
+    </div>
+    <!--   顯示時間倒數 -->
+    <div class="leftTime" style="display: none">
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
