@@ -5,12 +5,12 @@ const timeBox = document.querySelector('.timeBox')
 const leftTime = document.querySelector('.leftTime')
 const inputMinutes = document.querySelector('.minutes')
 const inputSeconds = document.querySelector('.seconds')
-const leftMinutes = document.querySelector('.leftMinutes')
-const leftSeconds = document.querySelector('.leftSeconds')
 const body = document.querySelector('body')
 
 let timeId;
 let stopTime = 0  //暫停後存取剩餘時間
+let saveMinutes;  //存取分鐘上一秒的值
+let saveSeconds;  //存取秒數上一秒的值
 // 監聽事件
 startButton.addEventListener('click', start)
 stopButton.addEventListener('click', stop)
@@ -65,6 +65,18 @@ function renderLeftTime(totalSeconds) {
     <span class="center-dot">:</span>
     <span class="leftSeconds">${String(seconds).padStart(2, 0)}</span>
   `
+  const leftMinutes = document.querySelector('.leftMinutes')
+  const leftSeconds = document.querySelector('.leftSeconds')
+  if ((saveSeconds !== String(seconds).padStart(2, 0)) && (saveMinutes !== String(minutes).padStart(2, 0))) {
+    leftSeconds.classList.add('moveMinutesSeconds')
+    leftMinutes.classList.add('moveMinutesSeconds')
+  } else if (saveSeconds !== String(seconds).padStart(2, 0)) {
+    leftSeconds.classList.add('moveMinutesSeconds')
+  } else if (saveMinutes !== String(minutes).padStart(2, 0)) {
+    leftMinutes.classList.add('moveMinutesSeconds')
+  }
+  saveMinutes = String(minutes).padStart(2, 0)
+  saveSeconds = String(seconds).padStart(2, 0)
 }
 //開始倒數
 function startTikTok(seconds) {

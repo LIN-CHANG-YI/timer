@@ -190,3 +190,14 @@ input::placeholder {
    from {top: 0;}
     to {top: 15px;}
 }
+
+/* 倒數時分秒跳動 */
+.moveMinutesSeconds {
+  position: relative;
+  animation: moveMS 0.5s 1
+}
+
+@keyframes moveMS {
+  from {top: 0;}
+    to {top: -7px;}
+}
