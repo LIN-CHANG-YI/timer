@@ -7,6 +7,8 @@ const inputMinutes = document.querySelector('.minutes')
 const inputSeconds = document.querySelector('.seconds')
 const leftMinutes = document.querySelector('.leftMinutes')
 const leftSeconds = document.querySelector('.leftSeconds')
+const body = document.querySelector('body')
+
 let timeId;
 let stopTime = 0  //暫停後存取剩餘時間
 // 監聽事件
@@ -18,6 +20,7 @@ function start() {
   const setMinutes = Number(inputMinutes.value)
   const setSeconds = Number(inputSeconds.value)
   resetButton.classList.remove('resetMove')
+  body.classList.remove('bodyShock')
   if (startButton.style.top === '15px') return
   if (setMinutes > 30 || setMinutes < 0 || setSeconds > 59 || setSeconds < 0 || (setMinutes === 30 && setSeconds > 0)) {
     return alert(`計時器最多計時 30 分鐘\n分鐘請輸入範圍 0 ~ 30\n秒數請輸入範圍 0 ~ 59`)
@@ -68,6 +71,9 @@ function startTikTok(seconds) {
   const timeup = Date.now() + seconds * 1000
   timeId = setInterval(() => {
     const remainingSeconds = Math.round((timeup - Date.now()) / 1000)
+    if (remainingSeconds === 0) {
+      body.classList.add('bodyShock')
+    }
     if (remainingSeconds < 0) {
       clearInterval(timeId)
       startButton.style.top = null

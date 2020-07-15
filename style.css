@@ -6,6 +6,19 @@ body {
   min-width: 600px;
   overflow: hidden;
 }
+/* 計時器震動 */
+.bodyShock {
+  animation: shock 0.05s 20;
+  position: relative;
+}
+@keyframes shock {
+  0% {
+    left: 6px;
+  }
+  50% {
+    right: 6px;
+  }
+}
 
 .fas {
   font-size: 25px;
